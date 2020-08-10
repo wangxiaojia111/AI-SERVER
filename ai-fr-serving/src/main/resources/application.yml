@@ -1,0 +1,17 @@
+server:
+  port: 59020
+spring:
+  application:
+    name: ai-fr-serving
+
+
+task:
+  threadNum: 3
+  isBlueImage: true
+  serverurl: http://8.99.5.194:5300/predict
+  taskScan: true
+  basePath: /exdoc
+  s3Admin: fileTransfer
+  bucket: ocr
+  configPath: /hexapp/ocrserver/config/s3storage.xml
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d] [%-5p] [%-25t] [%-20F:%-4L] -%m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="customAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/hexapp/logs/ai-fr-serving.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>/hexapp/logs/ai-fr-serving.log.%d{yyyy-MM-dd}-%i</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern><![CDATA[
+                [%d] [%-5p] [%-25t] [%-20F:%-4L] -%m%n
+            ]]></pattern>
+        </encoder>
+    </appender>
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="customAppender"/>
+    </root>
+</configuration>

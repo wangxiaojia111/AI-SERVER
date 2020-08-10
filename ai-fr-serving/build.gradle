@@ -1,0 +1,72 @@
+buildscript {
+    repositories {
+        mavenLocal()
+//    maven {
+//        url maven_default_url
+//        credentials {
+//            username maven_default_user
+//            password maven_default_pwd
+//        }
+//    }
+    }
+    dependencies {
+
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.19.RELEASE'
+    }
+}
+
+
+version = '1.0.5'
+
+group 'com.hex.ai.app'
+
+ext {
+    set('springCloudVersion', 'Edgware.SR5')
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+repositories {
+    mavenLocal()
+//    maven {
+//        url maven_default_url
+//        credentials {
+//            username maven_default_user
+//            password maven_default_pwd
+//        }
+//    }
+}
+
+configurations {
+    all*.exclude group: 'org.apache.logging.log4j'
+}
+dependencies {
+
+    compile fileTree(dir: 'libs', includes: ['*.jar'])
+    compile("com.hex.commons:goframe-image-process:1.0.6") {
+
+    }
+    compile ('com.squareup.okhttp:okhttp:2.7.5')
+    compile("com.hex.ai.commons:ai-commons:1.0.8-SNAPSHOT") {}
+//    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile 'org.apache.httpcomponents:httpclient:4.4.1'
+    compile 'org.apache.httpcomponents:httpmime:4.4.1'
+//    compile 'org.springframework.boot:spring-boot-starter-web'
+
+    compile("org.springframework.boot:spring-boot-starter-web") {
+
+    }
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.56'
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.19.RELEASE'
+
+}
